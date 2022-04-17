@@ -38,6 +38,7 @@ app
     db
       .person
       .findMany()
+      .then(aliasedPeople)
       .then(people => response.json(people));
   })
   .get('/v2/people', (request: any, response: any) => {
