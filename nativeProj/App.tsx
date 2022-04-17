@@ -37,7 +37,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>{Constants.manifest?.extra?.backendUrl}</Text>
+      {
+        people.map((person) => (
+          <Text>
+            {person.id}
+            {' - '}
+            {`${person.lastName}, ${person.firstName}`}
+          </Text>
+        ))
+      }
+      { /* eslint-disable-next-line react/style-prop-object */ }
       <StatusBar style="auto" />
     </View>
   );
