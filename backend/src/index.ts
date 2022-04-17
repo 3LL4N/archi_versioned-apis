@@ -9,6 +9,8 @@ const app = express();
 
 const db = new PrismaClient();
 
+const PORT = 5050;
+
 app
   .use(cors())
   .use(bodyParser.json())
@@ -20,6 +22,6 @@ app
         response.json(people);
       });
   })
-  .listen(8000, () => {
-    console.log('Server started at http://localhost:8000');
+  .listen(PORT, () => {
+    console.log('Server started at localhost:5050');
   });
