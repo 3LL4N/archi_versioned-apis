@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import 'dotenv/config';
+import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,15 +12,22 @@ const styles = StyleSheet.create({
   },
 });
 
+function backendUrl(path: string) {
+  return `${Constants.manifest?.extra?.backendUrl}/${path}`;
+}
+
 export default function App() {
 
   useEffect(() => {
-    fetch('http://localhost:8000')
+    fetch(backendUrl('people'))
+    .catch(error => {
+      console.log(error)
+    })
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>{process.env.BACKEND_URL}</Text>
+      <Text>{Constants.manifest?.extra?.backendUrl}</Text>
       <StatusBar style="auto" />
     </View>
   );
