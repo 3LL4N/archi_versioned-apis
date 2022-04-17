@@ -9,6 +9,6 @@ generator client {
 
 model Person {
     id Int @id @default(autoincrement())
-    firstName String
-    lastName String
+    givenName String
+    familyName String
 }
