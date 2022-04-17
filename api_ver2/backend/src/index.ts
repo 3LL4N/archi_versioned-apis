@@ -38,9 +38,8 @@ app
     db
       .person
       .findMany()
-      .then((people) => {
-        response.json(people);
-      });
+      .then(aliasedPeople)
+      .then(response.json);
   })
   .get('/v2/people', (request: any, response: any) => {
     db
@@ -48,7 +47,8 @@ app
       .findMany()
       .then((people) => {
         response.json(people);
-  })
+      })
+    })
   .listen(PORT, () => {
     console.log('Server started at localhost:5050');
   });
