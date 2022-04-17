@@ -23,6 +23,14 @@ interface PersonV2 {
   givenName: string;
 }
 
+function aliasedPeople(people: PersonV2[]): PersonV1[] {
+  return people.map((person) => ({
+    id: person.id,
+    firstName: person.givenName,
+    lastName: person.familyName,
+  }));
+}
+
 app
   .use(cors())
   .use(bodyParser.json())
